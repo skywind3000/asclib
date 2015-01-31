@@ -159,6 +159,20 @@ public class CoreEncode {
 		return (x1) | (x2 << 32);
 	}	
 	
+	public static String bin2txt(byte[] buf, int pos, int len) {
+		String txt = "";
+		for (int i = 0; i < len; i++) {
+			int ch = ((int)buf[pos + i]) & 0xff;
+			txt += Integer.toHexString(ch) + ((i < len - 1)? " " : "");
+		}
+		return txt;
+	}
+	
+	public static byte[] txt2bin(String text) {
+		
+		return null;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

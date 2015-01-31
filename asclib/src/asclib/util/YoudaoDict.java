@@ -13,7 +13,7 @@ import java.io.UnsupportedEncodingException;
 
 
 /**
- * ÓĞµÀ´Êµä±¾µØ´Ê¿â¶ÁÈ¡Àà
+ * æœ‰é“è¯å…¸æœ¬åœ°è¯åº“è¯»å–ç±»
  *
  */
 public class YoudaoDict {
@@ -36,8 +36,8 @@ public class YoudaoDict {
 	private int wordcount = 0;
 	
 	/**
-	 * ´ÓÄÚ´æ¶ÁÈë×Öµä²¢½¨Á¢Ë÷Òı
-	 * @param bytes ÄÚ´æÊı×é£¨±¾µØ×Öµä¿âÄÚÈİ£©
+	 * ä»å†…å­˜è¯»å…¥å­—å…¸å¹¶å»ºç«‹ç´¢å¼•
+	 * @param bytes å†…å­˜æ•°ç»„ï¼ˆæœ¬åœ°å­—å…¸åº“å†…å®¹ï¼‰
 	 * @return true for successful, false for error
 	 */
 	private boolean loadFromMemory(byte[] bytes) {
@@ -145,8 +145,8 @@ public class YoudaoDict {
 	}
 	
 	/**
-	 * ´ÓÄÚ´æ¶ÁÈ¡×Öµä²¢¹¹Ôì¶ÔÏó
-	 * @param bytes ÄÚ´æÊı×é£¬dictcn.db/dicten.db ÄÚÈİ
+	 * ä»å†…å­˜è¯»å–å­—å…¸å¹¶æ„é€ å¯¹è±¡
+	 * @param bytes å†…å­˜æ•°ç»„ï¼Œdictcn.db/dicten.db å†…å®¹
 	 * @throws java.lang.Throwable
 	 */
 	public YoudaoDict(byte[] bytes) throws java.lang.Throwable {
@@ -156,8 +156,8 @@ public class YoudaoDict {
 	}
 	
 	/**
-	 * ´ÓÁ÷¶ÁÈëÊı¾İ²¢¹¹Ôì¶ÔÏó
-	 * @param input ÊäÈëÁ÷
+	 * ä»æµè¯»å…¥æ•°æ®å¹¶æ„é€ å¯¹è±¡
+	 * @param input è¾“å…¥æµ
 	 * @throws java.lang.Throwable
 	 */
 	public YoudaoDict(InputStream input) throws java.lang.Throwable {
@@ -167,8 +167,8 @@ public class YoudaoDict {
 	}
 	
 	/**
-	 * ´ÓÎÄ¼şÂ·¾¶¼ÓÔØÊı¾İ²¢¹¹Ôì¶ÔÏó
-	 * @param fileName ÎÄ¼şÂ·¾¶
+	 * ä»æ–‡ä»¶è·¯å¾„åŠ è½½æ•°æ®å¹¶æ„é€ å¯¹è±¡
+	 * @param fileName æ–‡ä»¶è·¯å¾„
 	 * @throws java.lang.Throwable
 	 */
 	public YoudaoDict(String fileName) throws java.lang.Throwable {
@@ -178,9 +178,9 @@ public class YoudaoDict {
 	}
 	
 	/**
-	 * ²éÑ¯´Êµä²¢·µ»Ø { ¶ÁÒô, ½âÊÍ } µÄ×Ö·û´®Êı×é
-	 * @param word ĞèÒª²éÑ¯µÄµ¥´Ê
-	 * @return Èç¹û´æÔÚÔò·µ»Ø { ¶ÁÒô, ½âÊÍ }£¬·ñÔò·µ»Ø null
+	 * æŸ¥è¯¢è¯å…¸å¹¶è¿”å› { è¯»éŸ³, è§£é‡Š } çš„å­—ç¬¦ä¸²æ•°ç»„
+	 * @param word éœ€è¦æŸ¥è¯¢çš„å•è¯
+	 * @return å¦‚æœå­˜åœ¨åˆ™è¿”å› { è¯»éŸ³, è§£é‡Š }ï¼Œå¦åˆ™è¿”å› null
 	 */
 	public String[] get(String word) {
 		Integer offset = lookup.get(word);
@@ -219,26 +219,26 @@ public class YoudaoDict {
 	}
 	
 	/**
-	 * ´ÊµäÖĞÊÇ·ñÓĞ¸Ãµ¥´Ê
-	 * @param word ĞèÒª²éÑ¯µÄµ¥´Ê
-	 * @return °üº¬·µ»Ø true£¬·ñÔò·µ»Ø false
+	 * è¯å…¸ä¸­æ˜¯å¦æœ‰è¯¥å•è¯
+	 * @param word éœ€è¦æŸ¥è¯¢çš„å•è¯
+	 * @return åŒ…å«è¿”å› trueï¼Œå¦åˆ™è¿”å› false
 	 */
 	public boolean contains(String word) {
 		return lookup.containsKey(word);
 	}
 	
 	/**
-	 * ·µ»Ø×ÖµäÖĞÓĞ¶àÉÙ¸öµ¥´Ê
-	 * @return ·µ»Ø×ÖµäÖĞµÄµ¥´Ê¸öÊı
+	 * è¿”å›å­—å…¸ä¸­æœ‰å¤šå°‘ä¸ªå•è¯
+	 * @return è¿”å›å­—å…¸ä¸­çš„å•è¯ä¸ªæ•°
 	 */
 	public int size() {
 		return wordcount;
 	}
 	
 	/**
-	 * È¡µÃ×ÖµäÖĞµÄµ¥´Ê
-	 * @param position µ¥´ÊÎ»ÖÃ
-	 * @return µ¥´Ê
+	 * å–å¾—å­—å…¸ä¸­çš„å•è¯
+	 * @param position å•è¯ä½ç½®
+	 * @return å•è¯
 	 */
 	public String key(int position) {
 		if (position < 0 || position >= wordcount) return null;
@@ -246,10 +246,10 @@ public class YoudaoDict {
 	}
 	
 	/**
-	 * ¶ş·ÖÆ¥ÅäÇ°×º£¬ÕÒ³öÇ°×ºÏàËÆµÄÒ»Åúµ¥´Ê£¬²¢·µ»ØÁĞ±í
-	 * @param word ±»²éÕÒ
-	 * @param count Ï£ÍûÆ¥Åä¶àÉÙ¸öµ¥´Ê
-	 * @return ×Ö·û´®Êı×é£¬±£´æ×ÅÆ¥Åäµ½µÄµ¥´Ê
+	 * äºŒåˆ†åŒ¹é…å‰ç¼€ï¼Œæ‰¾å‡ºå‰ç¼€ç›¸ä¼¼çš„ä¸€æ‰¹å•è¯ï¼Œå¹¶è¿”å›åˆ—è¡¨
+	 * @param word è¢«æŸ¥æ‰¾
+	 * @param count å¸Œæœ›åŒ¹é…å¤šå°‘ä¸ªå•è¯
+	 * @return å­—ç¬¦ä¸²æ•°ç»„ï¼Œä¿å­˜ç€åŒ¹é…åˆ°çš„å•è¯
 	 */
 	public String[] match(String word, int count) {
 		if (wordcount <= 0) return new String[] {};
@@ -293,7 +293,7 @@ public class YoudaoDict {
 		//System.out.println("result" + String.("a" < "b"));
 		YoudaoDict d = new YoudaoDict("e:/english/youdao/dictcn.db");
 		System.out.println(" " + ("b".compareTo("b")));
-		// ²éÑ¯µ¥¸öµ¥´Ê
+		// æŸ¥è¯¢å•ä¸ªå•è¯
 		String[] t = d.get("apple");
 		if (t != null) {
 			System.out.printf("%s\n%s\n", t[0], t[1]);

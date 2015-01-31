@@ -2,68 +2,68 @@ package asclib.net;
 
 public interface ChannelInst {
 	// instructions channel will receive
-	final int ITMT_NEW		=	0;	// ĞÂ½üÍâ²¿Á¬½Ó£º(id,tag) ip/d,port/w   <hid>
-	final int ITMT_LEAVE	=	1;	// ¶Ï¿ªÍâ²¿Á¬½Ó£º(id,tag)           <hid>
-	final int ITMT_DATA		=	2;	// Íâ²¿Êı¾İµ½´ï£º(id,tag) data...    <hid>
-	final int ITMT_CHANNEL	=	3;	// ÆµµÀÍ¨ĞÅ£º(channel,tag)    <>
-	final int ITMT_CHNEW	=	4;	// ÆµµÀ¿ªÆô£º(channel,id)
-	final int ITMT_CHSTOP	=	5;	// ÆµµÀ¶Ï¿ª£º(channel,tag)
-	final int ITMT_SYSCD	=	6;	// ÏµÍ³ĞÅÏ¢£º(subtype, v) data...
-	final int ITMT_TIMER	=	7;	// ÏµÍ³Ê±ÖÓ£º(timesec,timeusec)
-	final int ITMT_UNRDAT	=	10;	// ²»¿É¿¿Êı¾İ°ü£º(id,tag)
-	final int ITMT_NOOP		=	80;	// ¿ÕÖ¸Áî£º(wparam, lparam)
-	//final int ITMT_BLOCK	=	99;	// Ã»ÓĞÖ¸Áî
+	final int ITMT_NEW		=	0;	// æ–°è¿‘å¤–éƒ¨è¿æ¥ï¼š(id,tag) ip/d,port/w   <hid>
+	final int ITMT_LEAVE	=	1;	// æ–­å¼€å¤–éƒ¨è¿æ¥ï¼š(id,tag)           <hid>
+	final int ITMT_DATA		=	2;	// å¤–éƒ¨æ•°æ®åˆ°è¾¾ï¼š(id,tag) data...    <hid>
+	final int ITMT_CHANNEL	=	3;	// é¢‘é“é€šä¿¡ï¼š(channel,tag)    <>
+	final int ITMT_CHNEW	=	4;	// é¢‘é“å¼€å¯ï¼š(channel,id)
+	final int ITMT_CHSTOP	=	5;	// é¢‘é“æ–­å¼€ï¼š(channel,tag)
+	final int ITMT_SYSCD	=	6;	// ç³»ç»Ÿä¿¡æ¯ï¼š(subtype, v) data...
+	final int ITMT_TIMER	=	7;	// ç³»ç»Ÿæ—¶é’Ÿï¼š(timesec,timeusec)
+	final int ITMT_UNRDAT	=	10;	// ä¸å¯é æ•°æ®åŒ…ï¼š(id,tag)
+	final int ITMT_NOOP		=	80;	// ç©ºæŒ‡ä»¤ï¼š(wparam, lparam)
+	//final int ITMT_BLOCK	=	99;	// æ²¡æœ‰æŒ‡ä»¤
 	
 	// instructions from channel to transmod
-	final int ITMC_DATA		=	0;	// Íâ²¿Êı¾İ·¢ËÍ£º(id,*) data...
-	final int ITMC_CLOSE	=	1;	// ¹Ø±ÕÍâ²¿Á¬½Ó£º(id,code)
-	final int ITMC_TAG		=	2;	// ÉèÖÃTAG£º(id,tag)
-	final int ITMC_CHANNEL	=	3;	// ×é¼äÍ¨ĞÅ£º(channel,*) data...
-	final int ITMC_MOVEC	=	4;	// ÒÆ¶¯Íâ²¿Á¬½Ó£º(channel,id) data...
-	final int ITMC_SYSCD	=	5;	// ÏµÍ³¿ØÖÆÏûÏ¢£º(subtype, v) data...
-	final int ITMC_BROADCAST	=	6;	// ¹ã²¥
-	final int ITMC_UNRDAT	=	10;	// ²»¿É¿¿Êı¾İ°ü£º(id,tag)
-	final int ITMC_IOCTL	=	11;	// Á¬½Ó¿ØÖÆÖ¸Áî£º(id,flag)
-	//final int ITMC_SEED		=	12;	// ÉèÖÃ¼ÓÃÜÖÖ×Ó
-	final int ITMC_NOOP		=	80;	// ¿ÕÖ¸Áî£º(*,*)
+	final int ITMC_DATA		=	0;	// å¤–éƒ¨æ•°æ®å‘é€ï¼š(id,*) data...
+	final int ITMC_CLOSE	=	1;	// å…³é—­å¤–éƒ¨è¿æ¥ï¼š(id,code)
+	final int ITMC_TAG		=	2;	// è®¾ç½®TAGï¼š(id,tag)
+	final int ITMC_CHANNEL	=	3;	// ç»„é—´é€šä¿¡ï¼š(channel,*) data...
+	final int ITMC_MOVEC	=	4;	// ç§»åŠ¨å¤–éƒ¨è¿æ¥ï¼š(channel,id) data...
+	final int ITMC_SYSCD	=	5;	// ç³»ç»Ÿæ§åˆ¶æ¶ˆæ¯ï¼š(subtype, v) data...
+	final int ITMC_BROADCAST	=	6;	// å¹¿æ’­
+	final int ITMC_UNRDAT	=	10;	// ä¸å¯é æ•°æ®åŒ…ï¼š(id,tag)
+	final int ITMC_IOCTL	=	11;	// è¿æ¥æ§åˆ¶æŒ‡ä»¤ï¼š(id,flag)
+	//final int ITMC_SEED		=	12;	// è®¾ç½®åŠ å¯†ç§å­
+	final int ITMC_NOOP		=	80;	// ç©ºæŒ‡ä»¤ï¼š(*,*)
 
 	// the sub instructions for the ITMC_SYSINFO
-	final int ITMS_CONNC	=	0;	// ÇëÇóÁ¬½ÓÊıÁ¿(st,0) cu/d,cc/d
-	final int ITMS_LOGLV	=	1;	// ÉèÖÃÈÕÖ¾¼¶±ğ(st,level)
-	final int ITMS_LISTC	=	2;	// ·µ»ØÆµµÀĞÅÏ¢(st,cn) d[ch,id,tag],w[t,c]
-	final int ITMS_RTIME	=	3;	// ÏµÍ³ÔËĞĞÊ±¼ä(st,wtime)
-	final int ITMS_TMVER	=	4;	// ´«ÊäÄ£¿é°æ±¾(st,tmver)
-	final int ITMS_REHID	=	5;	// ·µ»ØÆµµÀµÄ(st,ch)
-	final int ITMS_QUITD	=	6;	// ÇëÇó×Ô¼ºÍË³ö
-	//final int ITMS_NODELAY	=	7;	// ÉèÖÃ½ûÓÃNagleËã·¨
-	final int ITMS_TIMER	=	8;	// ÉèÖÃÆµµÀÁãµÄÊ±ÖÓ(st,timems)
-	//final int ITMS_INTERVAL	=	9;	// ÉèÖÃÊÇ·ñÎª¼ä¸ôÄ£Ê½(st,isinterval)
-	final int ITMS_FASTMODE	=	10;	// ÉèÖÃÊÇ·ñÆôÓÃ¿ìËÙÄ£Ê½
-	final int ITMS_CHID		=	11;	// È¡µÃ×Ô¼ºµÄchannel±àºÅ(st, ch)
-	final int ITMS_BOOKADD	=	12;	// Ôö¼Ó¶©ÔÄ
-	final int ITMS_BOOKDEL	=	13;	// È¡Ïû¶©ÔÄ
-	final int ITMS_BOOKRST	=	14;	// Çå¿Õ¶©ÔÄ
-	final int ITMS_STATISTIC	=	15;	// Í³¼ÆĞÅÏ¢
-	final int ITMS_RC4SKEY	=	16;	// ÉèÖÃ·¢ËÍKEY (st, hid) key
-	final int ITMS_RC4RKEY	=	17;	// ÉèÖÃ½ÓÊÕKEY (st, hid) key
-	final int ITMS_DISABLE	=	18;	// ½ûÖ¹½ÓÊÕ¸ÃÓÃ»§ÏûÏ¢
-	final int ITMS_ENABLE	=	19;	// ÔÊĞí½ÓÊÕ¸ÃÓÃ»§ÏûÏ¢
-	final int ITMS_SETDOC	=	20;	// ÎÄµµÉèÖÃ
-	final int ITMS_GETDOC	=	21;	// ÎÄµµ¶ÁÈ¡
-	final int ITMS_MESSAGE	=	22;	// Íâ²¿¿ØÖÆÊÂ¼ş
+	final int ITMS_CONNC	=	0;	// è¯·æ±‚è¿æ¥æ•°é‡(st,0) cu/d,cc/d
+	final int ITMS_LOGLV	=	1;	// è®¾ç½®æ—¥å¿—çº§åˆ«(st,level)
+	final int ITMS_LISTC	=	2;	// è¿”å›é¢‘é“ä¿¡æ¯(st,cn) d[ch,id,tag],w[t,c]
+	final int ITMS_RTIME	=	3;	// ç³»ç»Ÿè¿è¡Œæ—¶é—´(st,wtime)
+	final int ITMS_TMVER	=	4;	// ä¼ è¾“æ¨¡å—ç‰ˆæœ¬(st,tmver)
+	final int ITMS_REHID	=	5;	// è¿”å›é¢‘é“çš„(st,ch)
+	final int ITMS_QUITD	=	6;	// è¯·æ±‚è‡ªå·±é€€å‡º
+	//final int ITMS_NODELAY	=	7;	// è®¾ç½®ç¦ç”¨Nagleç®—æ³•
+	final int ITMS_TIMER	=	8;	// è®¾ç½®é¢‘é“é›¶çš„æ—¶é’Ÿ(st,timems)
+	//final int ITMS_INTERVAL	=	9;	// è®¾ç½®æ˜¯å¦ä¸ºé—´éš”æ¨¡å¼(st,isinterval)
+	final int ITMS_FASTMODE	=	10;	// è®¾ç½®æ˜¯å¦å¯ç”¨å¿«é€Ÿæ¨¡å¼
+	final int ITMS_CHID		=	11;	// å–å¾—è‡ªå·±çš„channelç¼–å·(st, ch)
+	final int ITMS_BOOKADD	=	12;	// å¢åŠ è®¢é˜…
+	final int ITMS_BOOKDEL	=	13;	// å–æ¶ˆè®¢é˜…
+	final int ITMS_BOOKRST	=	14;	// æ¸…ç©ºè®¢é˜…
+	final int ITMS_STATISTIC	=	15;	// ç»Ÿè®¡ä¿¡æ¯
+	final int ITMS_RC4SKEY	=	16;	// è®¾ç½®å‘é€KEY (st, hid) key
+	final int ITMS_RC4RKEY	=	17;	// è®¾ç½®æ¥æ”¶KEY (st, hid) key
+	final int ITMS_DISABLE	=	18;	// ç¦æ­¢æ¥æ”¶è¯¥ç”¨æˆ·æ¶ˆæ¯
+	final int ITMS_ENABLE	=	19;	// å…è®¸æ¥æ”¶è¯¥ç”¨æˆ·æ¶ˆæ¯
+	final int ITMS_SETDOC	=	20;	// æ–‡æ¡£è®¾ç½®
+	final int ITMS_GETDOC	=	21;	// æ–‡æ¡£è¯»å–
+	final int ITMS_MESSAGE	=	22;	// å¤–éƒ¨æ§åˆ¶äº‹ä»¶
 	
-	final int ITMS_NODELAY	=	1;	// Á¬½Ó¿ØÖÆ£ºÉèÖÃÁ¢¼´·¢ËÍÄ£Ê½
-	final int ITMS_NOPUSH	=	2;	// Á¬½Ó¿ØÖÆ£ºÉèÖÃÊı¾İÁ÷Èû×Ó
+	final int ITMS_NODELAY	=	1;	// è¿æ¥æ§åˆ¶ï¼šè®¾ç½®ç«‹å³å‘é€æ¨¡å¼
+	final int ITMS_NOPUSH	=	2;	// è¿æ¥æ§åˆ¶ï¼šè®¾ç½®æ•°æ®æµå¡å­
 	final int ITMS_PRIORITY	=	3;	// SO_PRIORITY
 	final int ITMS_TOS		=	4;	// IP_TOS
 	
 	// for log
-	final int ITML_BASE		=	0x01; // ÈÕÖ¾´úÂë£º»ù±¾
-	final int ITML_INFO		=	0x02; // ÈÕÖ¾´úÂë£ºĞÅÏ¢
-	final int ITML_ERROR	=	0x04; // ÈÕÖ¾´úÂë£º´íÎó
-	final int ITML_WARNING	=	0x08; // ÈÕÖ¾´úÂë£º¾¯¸æ
-	final int ITML_DATA		=	0x10; // ÈÕÖ¾´úÂë£ºÊı¾İ
-	final int ITML_CHANNEL	=	0x20; // ÈÕÖ¾´úÂë£ºÆµµÀ
-	final int ITML_EVENT	=	0x40; // ÈÕÖ¾´úÂë£ºÊÂ¼ş
-	final int ITML_LOST		=	0x80; // ÈÕÖ¾´úÂë£º¶ª°ü¼ÇÂ¼			
+	final int ITML_BASE		=	0x01; // æ—¥å¿—ä»£ç ï¼šåŸºæœ¬
+	final int ITML_INFO		=	0x02; // æ—¥å¿—ä»£ç ï¼šä¿¡æ¯
+	final int ITML_ERROR	=	0x04; // æ—¥å¿—ä»£ç ï¼šé”™è¯¯
+	final int ITML_WARNING	=	0x08; // æ—¥å¿—ä»£ç ï¼šè­¦å‘Š
+	final int ITML_DATA		=	0x10; // æ—¥å¿—ä»£ç ï¼šæ•°æ®
+	final int ITML_CHANNEL	=	0x20; // æ—¥å¿—ä»£ç ï¼šé¢‘é“
+	final int ITML_EVENT	=	0x40; // æ—¥å¿—ä»£ç ï¼šäº‹ä»¶
+	final int ITML_LOST		=	0x80; // æ—¥å¿—ä»£ç ï¼šä¸¢åŒ…è®°å½•			
 }

@@ -23,9 +23,9 @@ public class Platform {
 	}
 	
 	/**
-	 * Á¬½ÓÁ½¸öÂ·¾¶£¬pythonµÄ os.path.join
-	 * @param base Â·¾¶1
-	 * @param path Â·¾¶2
+	 * è¿æ¥ä¸¤ä¸ªè·¯å¾„ï¼Œpythonçš„ os.path.join
+	 * @param base è·¯å¾„1
+	 * @param path è·¯å¾„2
 	 * @return
 	 */
 	public static String pathJoin(String base, String path) {
@@ -65,8 +65,8 @@ public class Platform {
 	}
 	
 	/**
-	 * ´Ó classpathÖĞ²éÕÒÄ£¿é
-	 * @param name Ä£¿éÃû×Ö
+	 * ä» classpathä¸­æŸ¥æ‰¾æ¨¡å—
+	 * @param name æ¨¡å—åå­—
 	 * @return
 	 */
 	public static String findModule(String name) {
@@ -84,8 +84,8 @@ public class Platform {
 	}
 	
 	/**
-	 * ÔÚ classpathÖĞËÑË÷²¢¼ÓÔØÃû×ÖÎª name + "." + platformµÄÄ£¿é
-	 * @param name Ä£¿éµÄÖ÷Ãû£¬±ÈÈçwin32ÏÂ£¬name=QuickNet£¬½«»áËÑË÷ QuickNet.win32
+	 * åœ¨ classpathä¸­æœç´¢å¹¶åŠ è½½åå­—ä¸º name + "." + platformçš„æ¨¡å—
+	 * @param name æ¨¡å—çš„ä¸»åï¼Œæ¯”å¦‚win32ä¸‹ï¼Œname=QuickNetï¼Œå°†ä¼šæœç´¢ QuickNet.win32
 	 * @throws UnsatisfiedLinkError 
 	 */
 	public static String loadModule(String name) {

@@ -1,5 +1,7 @@
 package asclib.core;
 
+import java.nio.ByteBuffer;
+
 /**
  * Ring Buffer
  *
@@ -12,6 +14,7 @@ public class CoreRing {
 	private int rest = 0;
 	private int capacity = 0;
 	private boolean autoinc = false;
+	private ByteBuffer bf = null;
 	
 	public CoreRing() {
 		destroy();
@@ -21,6 +24,10 @@ public class CoreRing {
 	public void destroy() {
 		ring = null;
 		head = tail = size = capacity = 0;
+		if (bf != null) {
+			bf.clear();
+		}
+		bf = null;
 	}	
 	
 	public int length() {
@@ -30,9 +37,12 @@ public class CoreRing {
 	private void update() {
 		if (head >= tail) {
 			size = head - tail;
+			if (bf != null) bf.limit(head);
 		}	else {
 			size = capacity - tail + head;
+			if (bf != null) bf.limit(capacity);
 		}
+		if (bf != null) bf.position(tail);
 		rest = capacity - size - 1;
 		if (rest < 0) rest = 0;
 	}
@@ -47,11 +57,13 @@ public class CoreRing {
 			}
 		}
 		byte[] newring = new byte[newCapacity];
+		int saved = size;
 		read(newring, 0, newring.length);
-		head = size;
+		head = saved;
 		tail = 0;
 		ring = newring;
 		capacity = newCapacity;
+		bf = ByteBuffer.wrap(ring);
 		update();
 	}
 	
@@ -87,28 +99,28 @@ public class CoreRing {
 			if (offset + length > buf.length) {
 				length = (buf.length >= offset)? (buf.length - offset) : 0;
 			}
-		}		
-		int canread = (size < length)? size : length;
-		if (canread == 0) return 0;
-		if (buf == null && peek == true) return canread;
-		if (head >= tail) {
+		}
+		int canread = size;
+		length = (length < canread)? length : canread;
+		if (length == 0) return 0;
+		if (buf == null && peek == true) return length;
+		int half = capacity - tail;
+		if (half >= length) {
 			if (buf != null) {
-				System.arraycopy(ring, tail, buf, offset, canread);
+				System.arraycopy(ring, tail, buf, offset, length);
 			}
 		}	else {
-			int t1 = capacity - tail;
-			int t2 = canread - t1;
 			if (buf != null) {
-				System.arraycopy(ring, tail, buf, offset, t1);
-				System.arraycopy(ring, 0, buf, offset + t1, t2);
-			}
+				System.arraycopy(ring, tail, buf, offset, half);
+				System.arraycopy(ring, 0, buf, offset + half, length - half);
+			}	
 		}
 		if (peek == false) {
-			tail += canread;
+			tail += length;
 			if (tail >= capacity) tail -= capacity;
 			update();
 		}		
-		return 0;
+		return length;
 	}
 	
 	public int read(byte[] buf, int offset, int length) {
@@ -128,12 +140,20 @@ public class CoreRing {
 	}
 	
 	public int drop(int length) {
+		if (length < 0) {
+			update();
+			return 0;
+		}
 		return fetch(null, 0, length, false);
 	}
 	
-	public byte[] buffer() {
+	public byte[] array() {
 		return ring;
 	}
+	
+	public ByteBuffer buffer() {
+		return bf;
+	}	
 	
 	public int position() {
 		return tail;
@@ -143,16 +163,26 @@ public class CoreRing {
 		return (head >= tail)? (head - tail) : (capacity - tail);
 	}
 	
-	public int getLength() {
-		return size;
-	}
-	
 	public int getRest() {
 		return rest;
 	}
 	
 	public int getCapacity() {
 		return (capacity <= 0)? 0 : (capacity - 1);
+	}
+	
+	public boolean auto() {
+		return autoinc;
+	}
+	
+	public void auto(boolean enable) {
+		autoinc = enable;
+	}
+	
+	public void clear() {
+		head = 0;
+		tail = 0;
+		update();
 	}
 }
 

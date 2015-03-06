@@ -185,6 +185,22 @@ public abstract class ClientNet {
 		_net.limit(bufferLimit);
 	}
 	
+	public void setRecvKey(byte[] key) {
+		_net.setRecvKey(key);
+	}
+	
+	public void setSendKey(byte[] key) {
+		_net.setSendKey(key);
+	}
+	
+	public int timeout() {
+		return _net.timeout();
+	}
+	
+	public void timeout(int timeout) {
+		_net.timeout(timeout);
+	}
+	
 	/**
 	 * Testing Case
 	 * @param args

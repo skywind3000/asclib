@@ -129,7 +129,7 @@ public class ChannelSocket {
 		if (length > 0) {
 			msg.data = new byte[length];
 			System.arraycopy(cache, 10, msg.data, 0, length);
-			if (msg.wparam == ChannelInst.ITMT_DATA) {
+			if (msg.event == ChannelInst.ITMT_DATA) {
 				XOR(msg.data, 0, length, xormask);
 			}
 		}

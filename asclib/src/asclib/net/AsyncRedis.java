@@ -252,8 +252,8 @@ public class AsyncRedis {
 				System.out.println("OnDisconnect() - reconnect in 5 seconds");
 			}});
 		
-		r.connect("192.168.0.21", 6379);
-		//r.connect("xnode2.ddns.net", 6379);
+		//r.connect("192.168.0.21", 6379);
+		r.connect("xnode2.ddns.net", 6379);
 		
 		r.request("set", "x", 100);
 		r.request("get", "x");

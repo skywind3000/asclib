@@ -1,3 +1,11 @@
+//=====================================================================
+//
+// asclib.core.CoreSocket - Core Socket
+//
+// NOTE:
+// for more information, please see the readme file.
+//
+//=====================================================================
 package asclib.core;
 
 import java.net.Socket;

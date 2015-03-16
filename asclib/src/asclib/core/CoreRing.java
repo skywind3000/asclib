@@ -1,6 +1,15 @@
+//=====================================================================
+//
+// asclib.core.CoreRing - Ring Buffer
+//
+// NOTE:
+// for more information, please see the readme file.
+//
+//=====================================================================
 package asclib.core;
 
 import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 
 /**
  * Ring Buffer
@@ -16,6 +25,8 @@ public class CoreRing {
 	private boolean autoinc = false;
 	private ByteBuffer bf = null;
 	
+	public final static Charset UTF8_CHARSET = Charset.forName("UTF-8"); 
+	
 	public CoreRing() {
 		destroy();
 		update();
@@ -24,10 +35,12 @@ public class CoreRing {
 	public void destroy() {
 		ring = null;
 		head = tail = size = capacity = 0;
-		if (bf != null) {
-			bf.clear();
-		}
 		bf = null;
+	}
+	
+	protected void finalize() throws java.lang.Throwable {
+		destroy();
+		super.finalize();
 	}	
 	
 	public int length() {
@@ -147,6 +160,15 @@ public class CoreRing {
 		return fetch(null, 0, length, false);
 	}
 	
+	public void write(byte[] buf) {
+		write(buf, 0, buf.length);
+	}
+	
+	public void write(String str) {
+		byte[] buf = str.getBytes(UTF8_CHARSET);
+		write(buf, 0, buf.length);
+	}
+	
 	public byte[] array() {
 		return ring;
 	}
@@ -183,6 +205,22 @@ public class CoreRing {
 		head = 0;
 		tail = 0;
 		update();
+	}
+	
+	public void transfer(CoreRing src, int length) {
+		int limit = src.length();
+		if (length < 0 || length > limit) length = limit;
+		while (length > 0) {
+			int size = src.pitch();
+			int need = (size > length)? length : size;
+			this.write(src.ring, src.tail, need);
+			src.drop(need);
+			length -= need;
+		}
+	}
+	
+	public void transfer(CoreRing src) {
+		transfer(src, -1);
 	}
 }
 

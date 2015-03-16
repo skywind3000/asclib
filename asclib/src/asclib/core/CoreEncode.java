@@ -1,3 +1,11 @@
+//=====================================================================
+//
+// asclib.core.CoreEncode - Encoding, Decoding and Serializing
+// 
+// NOTE:
+// for more information, please see the readme file
+//
+//=====================================================================
 package asclib.core;
 
 public class CoreEncode {
@@ -157,7 +165,7 @@ public class CoreEncode {
 		long x2 = decode32u_lsb(buf, pos);
 		long x1 = decode32u_lsb(buf, pos + 4);
 		return (x1) | (x2 << 32);
-	}	
+	}
 	
 	public static String bin2txt(byte[] buf, int pos, int len) {
 		String txt = "";
@@ -166,6 +174,34 @@ public class CoreEncode {
 			txt += Integer.toHexString(ch) + ((i < len - 1)? " " : "");
 		}
 		return txt;
+	}
+	
+	public static String repr(byte[] buf, int pos, int len) {
+		String txt = "\"";
+		String hex = "0123456789ABCDEF";
+		for (int i = 0; i < len; i++) {
+			int ch = ((int)buf[pos + i]) & 0xff;
+			if (ch == (int)'\r') {
+				txt += "\\r";
+			}
+			else if (ch == (int)'\n') {
+				txt += "\\n";
+			}
+			else if (ch == (int)'\t') {
+				txt += "\\t";
+			}
+			else if (ch >= 0x20 && ch <= 0x7e && ch != (int)'"') {
+				txt += (char)ch;
+			}	
+			else {
+				txt += "\\x" + hex.charAt((ch >> 4)) + hex.charAt(ch & 0xf);
+			}
+		}
+		return txt + "\"";
+	}
+	
+	public static String repr(byte[] buf) {
+		return repr(buf, 0, buf.length);
 	}
 	
 	public static byte[] txt2bin(String text) {

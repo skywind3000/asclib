@@ -1,3 +1,11 @@
+//=====================================================================
+//
+// asclib.core.CoreTimer - Linux Timer
+//
+// NOTE:
+// for more information, please see the readme file.
+//
+//=====================================================================
 package asclib.core;
 
 import asclib.core.CoreInt;

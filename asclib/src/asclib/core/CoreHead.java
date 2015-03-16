@@ -1,6 +1,6 @@
 //=====================================================================
 //
-// CoreHead.java - Linux kernel list head
+// asclib.core.CoreHead - Linux kernel list head
 //
 // NOTE:
 // for more information, please see the readme file.

@@ -1,3 +1,11 @@
+//=====================================================================
+//
+// asclib.core.CoreNet - Async Network Client
+//
+// NOTE:
+// for more information, please see the readme file.
+//
+//=====================================================================
 package asclib.core;
 
 import java.io.IOException;
@@ -466,6 +474,22 @@ public class CoreNet {
 	 */
 	public void limit(int bufferLimit) {
 		_limit_send = bufferLimit;
+	}
+	
+	/**
+	 * get timeout of connecting
+	 * @return milliseconds
+	 */
+	public int timeout() {
+		return (int)this._connect_timeout;
+	}
+	
+	/**
+	 * set timeout of connecting
+	 * @param timeout milliseconds
+	 */
+	public void timeout(int timeout) {
+		this._connect_timeout = timeout;
 	}
 	
 	public static void main(String[] args) {

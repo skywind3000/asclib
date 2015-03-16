@@ -1,3 +1,11 @@
+//=====================================================================
+//
+// asclib.core.CoreRC4 - RC4 encryption
+//
+// NOTE:
+// for more information, please see the readme file.
+//
+//=====================================================================
 package asclib.core;
 
 public class CoreRC4 {

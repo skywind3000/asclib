@@ -44,7 +44,8 @@
 
 	<!-- asclib -->
 	<target name="asclib" depends="init" description="make asclib.jar">
-		<javac encoding="utf-8" debug="on" srcdir="${basedir}/src" destdir="${build.dir.classes}">
+		<mkdir dir="${build.dir.classes}/asclib" />
+		<javac encoding="utf-8" debug="on" srcdir="${basedir}/src" destdir="${build.dir.classes}/asclib">
 			<classpath refid="compile.classpath" />
 		</javac>
 		<jar jarfile="${build.dir.lib}/asclib-1.0.jar">

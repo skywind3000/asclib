@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="cannon"  basedir="." default="asclib">
+	<description></description>
+	<!-- 属性设置 -->
+	<property environment="env" />
+	<property name="jdk.dir" value="${env.JAVA_HOME}" />
+	<property name="jdk.dir.lib" value="${jdk.dir}/lib" />
+
+	<property name="build.dir" value="${basedir}/build" />
+	<property name="build.dir.bin" value="${build.dir}/bin" />
+	<property name="build.dir.lib" value="${build.dir}/lib" />
+	<property name="build.dir.classes" value="${build.dir}/classes" />
+	<property name="build.dir.out" value="${basedir}/lib" />
+
+	<presetdef name="javac">
+		<javac includeantruntime="false" />
+	</presetdef>
+
+	<!-- 基本编译 -->
+	<path id="compile.classpath">
+		<!--
+		<fileset dir="${jdk.dir.lib}">
+			<include name="tools.jar" />
+		</fileset>
+		-->
+		<fileset dir="${build.dir.lib}">
+			<include name="**/*.*" />
+		</fileset>
+	</path>
+
+	<!-- 初始化建立目录 -->
+	<target name="init" depends="clean" description="initialize">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.dir.bin}" />
+		<mkdir dir="${build.dir.lib}" />
+		<mkdir dir="${build.dir.classes}" />
+	</target>
+
+	<!-- 清空目录 -->
+	<target name="clean" description="clean">
+		<delete dir="${build.dir}" />
+		<echo level="info">clean ok</echo>
+	</target>
+
+	<!-- asclib -->
+	<target name="asclib" depends="init" description="make asclib.jar">
+		<javac encoding="utf-8" debug="on" srcdir="${basedir}/src" destdir="${build.dir.classes}">
+			<classpath refid="compile.classpath" />
+		</javac>
+		<jar jarfile="${build.dir.lib}/asclib-1.0.jar">
+			<fileset dir="${build.dir.classes}/asclib" includes="**/*.*" />
+		</jar>	
+	</target>
+
+</project>
+
+
+

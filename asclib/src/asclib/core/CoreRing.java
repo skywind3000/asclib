@@ -222,6 +222,19 @@ public class CoreRing {
 	public void transfer(CoreRing src) {
 		transfer(src, -1);
 	}
+	
+	@Override
+	public String toString() {
+	    return "CoreRing{" +
+	            "ring size=" +ring.length +
+	            ", head=" + head +
+	            ", tail=" + tail +
+	            ", size=" + size +
+	            ", rest=" + rest +
+	            ", capacity=" + capacity +
+	            ", autoinc=" + autoinc +
+	            '}';
+	}
 }
 
 

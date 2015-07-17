@@ -390,6 +390,7 @@ public class CoreNet {
 		case 5: head_size = CoreEncode.decode8u(head_data, 0); break;
 		}
 		int length = head_size + head_inc - head_len;
+		if (size < length + head_len) return -1;
 		if (buf == null) return length;
 		if (len < length) return -2;
 		rcvbuf.drop(head_len);
